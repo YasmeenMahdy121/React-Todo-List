@@ -1,0 +1,88 @@
+section{
+    margin-top: 40px;
+    @media screen and (max-width: 540px) {
+        margin-top: 20px;
+    }
+    .item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 15px;
+        border-radius: 25px;
+        padding: 5px 17px;
+        &.complete{
+            opacity: .5;
+            text-decoration: line-through;
+       }
+       &.delete{
+           transition: 1s;
+           transform-origin: 0 50px;
+           transform: rotate(2deg) translateY(100px);
+           opacity: 0;
+       }
+        div{
+            display: flex;
+            p{
+                font-size: 18px;
+                padding:10px 0;
+                padding-right: 20px;
+                line-height: 1.4;
+                word-break: break-all;
+                @media screen and (max-width: 280px) {
+                    font-size: 15px;
+                } 
+            }
+            button{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: none;
+                font-size: 20px;
+                transition: .5s;
+                cursor: pointer;
+                &:first-child{
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+    &.default{
+        .item{
+            background-color: #181a1a;
+            color:  #ffdfdb;
+            button{
+                background-color: rgb(247, 226, 223);
+                color: rgb(0, 0, 0);
+                &:hover{             
+                    box-shadow: 0px 0px 10px 1px white;
+                }
+            }
+        }
+    }
+    &.light{
+        .item{
+            background-color: #AEB1B4;
+            color: #1a150e;
+            button{
+                background-color: white;
+                color: #1a150e;
+                &:hover{             
+                    background-color: #f0f0f0;
+                }
+            }
+        }
+    }
+    &.dark{
+        .item{
+            background-color: #01394c;
+            color: white;
+            button{
+                background-color: #002837;
+                color: white;
+                &:hover{             
+                    background-color: #001f29;
+                }
+            }
+        }
+    }
+}

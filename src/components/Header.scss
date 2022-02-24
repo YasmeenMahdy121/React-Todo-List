@@ -1,0 +1,91 @@
+header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ul{
+        align-self: flex-end;
+        display: flex;
+        li{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid #d1dae3;
+            cursor: pointer;
+            &:not(:last-child){
+                margin-right: 15px;
+            }
+            &:first-child{
+                background-image: linear-gradient(100deg, #575656, #062e3f);
+            }
+            &:nth-child(2){
+                background-image: linear-gradient(100deg, #d4f1ff, #ffffff);
+            }
+            &:last-child{
+                background-image: linear-gradient(100deg, #001214, #001f29);
+            }
+            @media screen and (max-width: 280px) {
+                width: 25px;
+                height: 25px;
+                &:not(:last-child){
+                    margin-right: 5px;
+                }
+            } 
+        }
+    }
+    h1{
+        display: block;
+        font-size: 100px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        margin-top: 50px;
+        border-right: solid 3px rgba(0, 0, 0, 0.75);
+        width: 0;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: control-width 2s both steps(11), blink 1s infinite;
+        @keyframes control-width {
+            from{
+                width: 0;
+            }
+            to{
+                width: 480px;
+            }
+            
+        }
+        @keyframes blink {
+            from{
+                border-right: solid 3px transparent;
+            }
+            to{
+                border-right: solid 3px rgba(0, 0, 0, 0.75);
+            }
+            
+        }
+        @media screen and (max-width: 540px) {
+            font-size: 50px;
+            @keyframes control-width {
+                from{
+                    width: 0;
+                }
+                to{
+                    width: 280px;
+                }
+                
+            }
+        }
+        @media screen and (max-width: 280px) {
+            font-size: 30px;
+            @keyframes control-width {
+                from{
+                    width: 0;
+                }
+                to{
+                    width: 190px;
+                }
+                
+            }
+        } 
+    }
+}
