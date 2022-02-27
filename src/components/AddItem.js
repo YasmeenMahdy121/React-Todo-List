@@ -15,7 +15,8 @@ class AddItem extends Component {
             let item={
                 id:Math.random()*10,
                 task:this.state.task,
-                complete:false
+                complete:false,
+                delete:''
             }
             this.props.addItem(item);
             this.setState({task:''});

@@ -20,14 +20,14 @@ class App extends Component {
     this.setState({items});
   }
   // delete item
-  deleteItem = (id,e)=>{
-    if(e.target.classList.contains('fas')){
-      e.target.parentElement.parentElement.parentElement.classList.add('delete')
-    }
-    else{
-      e.target.parentElement.parentElement.classList.add('delete')
-    }
+  deleteItem = (id)=>{
     let items = this.state.items;
+    items.map(item=>{
+      if(item.id===id){
+        item.delete='delete';
+        this.setState({items});
+      }
+    });
     items = items.filter(item=>item.id!==id);
     setTimeout(()=>{
       this.setState({items});
