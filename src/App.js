@@ -1,4 +1,5 @@
 import {Component, Fragment} from 'react';
+import { read_cookie, bake_cookie } from 'sfcookies';
 import Header from './components/Header';
 import AddItem from './components/AddItem';
 import TodoItems from './components/TodoItems';
@@ -9,15 +10,34 @@ class App extends Component {
     items:[],
     theme: "default"
   }
+
+  componentDidMount(){
+    const todoList = read_cookie('todoList')
+    if(todoList.theme){
+      this.setState({...todoList})
+    }
+    else{
+      bake_cookie('todoList',this.state)
+    }
+
+  }
   // change theme function
   changeTheme = theme=>{
     this.setState({theme})
+    // store changed theme
+    let todoList = read_cookie('todoList')
+    todoList.theme = theme
+    bake_cookie('todoList',todoList)
   }
   // add item function
   addItem = item=>{
     let items=this.state.items;
     items.push(item);
     this.setState({items});
+    // store changed items
+    let todoList = read_cookie('todoList')
+    todoList.items = items
+    bake_cookie('todoList',todoList)
   }
   // delete item
   deleteItem = (id)=>{
@@ -32,6 +52,10 @@ class App extends Component {
     setTimeout(()=>{
       this.setState({items});
     },1000)
+    // store changed items
+    let todoList = read_cookie('todoList')
+    todoList.items = items
+    bake_cookie('todoList',todoList)
   }
   // complete item
   completeItem = id=>{
@@ -45,6 +69,10 @@ class App extends Component {
       }
     });
     this.setState({items});
+    // store changed items
+    let todoList = read_cookie('todoList')
+    todoList.items = items
+    bake_cookie('todoList',todoList)
   }
   render(){
     return (
